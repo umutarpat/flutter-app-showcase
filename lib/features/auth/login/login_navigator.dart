@@ -1,9 +1,11 @@
 import 'package:flutter_demo/dependency_injection/app_component.dart';
 import 'package:flutter_demo/features/auth/login/login_initial_params.dart';
 import 'package:flutter_demo/features/auth/login/login_page.dart';
+import 'package:flutter_demo/navigation/alert_dialog_route.dart';
 import 'package:flutter_demo/navigation/app_navigator.dart';
+import 'package:flutter_demo/navigation/error_dialog_route.dart';
 
-class LoginNavigator with LoginRoute {
+class LoginNavigator with LoginRoute, ErrorDialogRoute, AlertDialogRoute {
   LoginNavigator(this.appNavigator);
 
   @override

@@ -20,7 +20,8 @@ class LoginPage extends StatefulWidget with HasPresenter<LoginPresenter> {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> with PresenterStateMixin<LoginViewModel, LoginPresenter, LoginPage> {
+class _LoginPageState extends State<LoginPage>
+    with PresenterStateMixin<LoginViewModel, LoginPresenter, LoginPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Padding(
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> with PresenterStateMixin<LoginVie
                 decoration: InputDecoration(
                   hintText: appLocalizations.usernameHint,
                 ),
-                onChanged: (text) => presenter.setUsernameValue(username: text), //TODO
+                onChanged: (text) => presenter.setUsernameValue(username: text),
               ),
               const SizedBox(height: 8),
               TextField(
@@ -40,14 +41,19 @@ class _LoginPageState extends State<LoginPage> with PresenterStateMixin<LoginVie
                 decoration: InputDecoration(
                   hintText: appLocalizations.passwordHint,
                 ),
-                onChanged: (text) => presenter.setPasswordValue(password: text), //TODO
+                onChanged: (text) => presenter.setPasswordValue(password: text),
               ),
               const SizedBox(height: 16),
               stateObserver(
-                builder: (context, state) => ElevatedButton(
-                  onPressed: state.isLoginEnabled ? () =>  doNothing() : null, //TODO
-                  child: Text(appLocalizations.logInAction),
-                ),
+                builder: (context, state) => state.isLoading
+                    ? const CircularProgressIndicator()
+                    : ElevatedButton(
+                        /// disables elevated button with giving onPressed function null based on [state].
+                        onPressed: state.isLoginEnabled
+                            ? () => presenter.login()
+                            : null,
+                        child: Text(appLocalizations.logInAction),
+                      ),
               ),
             ],
           ),
