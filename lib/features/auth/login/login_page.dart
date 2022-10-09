@@ -1,7 +1,6 @@
 // ignore: unused_import
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/core/helpers.dart';
 import 'package:flutter_demo/core/utils/mvp_extensions.dart';
 import 'package:flutter_demo/features/auth/login/login_presentation_model.dart';
 import 'package:flutter_demo/features/auth/login/login_presenter.dart';
@@ -20,8 +19,7 @@ class LoginPage extends StatefulWidget with HasPresenter<LoginPresenter> {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage>
-    with PresenterStateMixin<LoginViewModel, LoginPresenter, LoginPage> {
+class _LoginPageState extends State<LoginPage> with PresenterStateMixin<LoginViewModel, LoginPresenter, LoginPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Padding(
@@ -49,9 +47,7 @@ class _LoginPageState extends State<LoginPage>
                     ? const CircularProgressIndicator()
                     : ElevatedButton(
                         /// disables elevated button with giving onPressed function null based on [state].
-                        onPressed: state.isLoginEnabled
-                            ? () => presenter.login()
-                            : null,
+                        onPressed: state.isLoginEnabled ? () => presenter.login() : null,
                         child: Text(appLocalizations.logInAction),
                       ),
               ),

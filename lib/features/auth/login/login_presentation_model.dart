@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_demo/core/domain/model/app_init_failure.dart';
 import 'package:flutter_demo/core/domain/model/user.dart';
 import 'package:flutter_demo/core/utils/bloc_extensions.dart';
 import 'package:flutter_demo/features/auth/domain/model/log_in_failure.dart';

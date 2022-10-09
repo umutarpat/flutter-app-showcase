@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_demo/core/helpers.dart';
 import 'package:flutter_demo/core/utils/bloc_extensions.dart';
 import 'package:flutter_demo/core/utils/either_extensions.dart';
 import 'package:flutter_demo/features/auth/domain/use_cases/log_in_use_case.dart';
@@ -35,8 +34,7 @@ class LoginPresenter extends Cubit<LoginViewModel> {
         )
         .asyncFold(
           (fail) => navigator.showError(fail.displayableFailure()),
-          (success) =>
-              navigator.showAlert(title: "Login", message: "Successful"),
+          (success) => navigator.showAlert(title: "Login", message: "Successful"),
         );
   }
 }
